@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeof.org">
+<head>
+  <title>Aplicação Calculadora Spring</title>
+  <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+  <div>
+    <form action="#" th:action="@{/}" method="post" id="operacaoForm">
+      <div>
+        <label for="modelOperacoes">Selecione a operação:</label>
+        <select id="modelOperacoes" name="modelOperacoes">
+          <option th:each="operacao: ${modelOperacoes}"
+                  th:value="${operacao}"
+                  th:text="${operacao}"
+                  th:selected="${operacao == selectedModel}">
+                </option>
+        </select>
+      </div>
+      <div>
+        <label for="valor01">Valor 01:</label>
+        <input id="valor01" name="valor01" type="text"/>
+      </div>
+      <div>
+        <label for="valor02">Valor 02:</label>
+        <input id="valor02" name="valor02" type="text"/>
+      </div>
+      <div>
+      <button type="submit" id="submitBtn">Calcular</button>
+      </div>
+    </form>
+    <div th:if="${response != null}" id="responseDiv">
+      <h4>RESPOSTA</h4>
+      <span th:text="${response}"></span>
+    </div>
+	</div>
+</body>
+</html>
